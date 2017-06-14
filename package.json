@@ -1,0 +1,35 @@
+{
+  "name": "kivra_content",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "pure-html": "bin/cli.js"
+  },
+  "scripts": {
+    "dev": "node index.js",
+    "start": "npm test && node build.js",
+    "test": "tape test/"
+  },
+  "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (http://alajmovic.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "browser-sync": "^2.18.8",
+    "bs-html-injector": "^3.0.3",
+    "commander": "^2.9.0",
+    "del": "^2.2.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "inline-source": "^5.2.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/samiralajmovic/pure-html.git"
+  },
+  "homepage": "https://github.com/samiralajmovic/pure-html",
+  "keywords": [
+    "html"
+  ]
+}

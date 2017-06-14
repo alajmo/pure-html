@@ -1,0 +1,5 @@
+{
+  "src": "content",
+  "dest": "dist",
+  "port": 1337
+}
