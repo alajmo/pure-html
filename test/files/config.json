@@ -1,0 +1,5 @@
+{
+  "src": "test/files/src",
+  "dest": "test/files/dest",
+  "port": 1337
+}
