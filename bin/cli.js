@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
-const action        = require('../lib/server.js');
+const action = require('../lib/server.js');
 const defaultConfig = require('../config/default.config.json');
-const fs            = require('fs');
-const path          = require('path');
-const program       = require('commander');
+const fs = require('fs');
+const glob = require('glob');
+const path = require('path');
+const program = require('commander');
 
 program
   .version('0.1.0')
@@ -14,7 +15,7 @@ program
   .parse(process.argv);
 
 function getConfig() {
-  const localConfig  = path.join(process.cwd(), defaultConfig.configName);
+  const localConfig = path.join(process.cwd(), defaultConfig.configName);
   const globalConfig = path.join(process.cwd(), defaultConfig.configName);
   if (program.config) {
     return program.config;
@@ -27,23 +28,16 @@ function getConfig() {
   return defaultConfig;
 }
 
-function getFiles() {
-  if (program.files) {
-    return program.files;
-  }
-
-  return '*.html';
-}
-
 function main() {
   const config = getConfig();
-  const files = getFiles();
+  const files = program.files
+    ? program.files
+    : glob.sync(`${config.src}/**/*.html`);
 
   if (program.dev) {
     action.dev(config, files);
   } else {
     action.build(config, files);
   }
-
 }
 main();
