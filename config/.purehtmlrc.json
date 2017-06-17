@@ -1,5 +1,4 @@
 {
-  "configName": "purehtml.config.json",
   "src": "src",
   "dest": "dist",
   "port": 3001
