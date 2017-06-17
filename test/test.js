@@ -19,7 +19,7 @@ test('Check that index.html is generated', t => {
 });
 
 test('Config file exists', (t) => {
-  t.equal(fs.existsSync('config/default.config.json'), true, 'default.config.json exists.');
+  t.equal(fs.existsSync('config/.purehtmlrc.json'), true, 'default.config.json exists.');
   t.equal(fs.existsSync('config.json'), true, 'config.json exists.');
   t.end();
 });

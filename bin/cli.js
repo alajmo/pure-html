@@ -1,33 +1,37 @@
-#!/usr/bin/env node
-
 const action = require('../lib/server.js');
-const defaultConfig = require('../config/default.config.json');
+const defaultConfig = require('../config/.purehtmlrc.json');
+const pureHtmlConfig = require('../config/config.json');
 const fs = require('fs');
 const glob = require('glob');
+const os = require('os');
 const path = require('path');
 const program = require('commander');
 
-console.log();
-
 program
-  .version('0.1.0')
+  .version('0.2.0')
   .option('-c, --config [path]', 'Config file location')
   .option('-d, --dev', 'Start browsersync')
   .option('-f, --file [file]', 'Only watch specific files')
   .parse(process.argv);
 
+
 function getConfig() {
-  const localConfig = path.join(process.cwd(), defaultConfig.configName);
-  const globalConfig = path.join(process.cwd(), defaultConfig.configName);
+  const localConfigPath = path.join(process.cwd(), pureHtmlConfig.configName);
+  const globalConfigPath = path.join(os.homedir(), pureHtmlConfig.configName);
+
   if (program.config) {
     return require(path.join(process.cwd(), program.config));
-  } else if (fs.existsSync(localConfig)) {
-    return require(localConfig);
-  } else if (fs.existsSync(localConfig)) {
-    return require(localConfig);
   }
 
-  return defaultConfig;
+  if (fs.existsSync(localConfigPath)) {
+    return require(localConfigPath);
+  }
+
+  if (fs.existsSync(globalConfigPath)) {
+    return require(globalConfigPath);
+  }
+
+  return pureHtmlConfig;
 }
 
 function main() {
