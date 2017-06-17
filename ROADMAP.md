@@ -1,16 +1,16 @@
 # Roadmap
 
-## Planned features
+## Planned Features
 
 * Browserstack screenshots.
 * Javascript support.
+* Autoprefixer.
 * Pass in autoprefixer config file.
 * Pass in browserSync config file.
-* Add templates (index.html, reset.css etc).
+* Better error handling.
 
-## 0.1.0
+## Development
 
-* [ ] Inline style.
-* [ ] Autoprefixer.
-* [ ] Auto-reload html / css.
+* Add conventional commits, add githooks before commits.
+* Add git hooks for testing.
 

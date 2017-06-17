@@ -1,6 +1,6 @@
 {
   "name": "kivra_content",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -9,11 +9,12 @@
   "scripts": {
     "dev": "node index.js",
     "start": "npm test && node build.js",
-    "test": "tape test/"
+    "test": "node test/test.js"
   },
   "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (http://alajmovic.com)",
   "license": "MIT",
   "devDependencies": {
+    "html5-lint": "^0.3.0",
     "tape": "^4.6.3"
   },
   "dependencies": {
