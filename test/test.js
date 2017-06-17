@@ -2,8 +2,8 @@ const child = require('child_process');
 const config = require('./files/config.json');
 const del = require('del');
 const fs = require('fs');
-const test = require('tape');
 const html5Lint = require('html5-lint');
+const test = require('tape');
 
 test('Check that index.html is generated', t => {
   child.execSync('node bin/cli.js -c test/files/config.json', {
