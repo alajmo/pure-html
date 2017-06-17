@@ -7,6 +7,8 @@ const glob = require('glob');
 const path = require('path');
 const program = require('commander');
 
+console.log();
+
 program
   .version('0.1.0')
   .option('-c, --config [path]', 'Config file location')
@@ -18,7 +20,7 @@ function getConfig() {
   const localConfig = path.join(process.cwd(), defaultConfig.configName);
   const globalConfig = path.join(process.cwd(), defaultConfig.configName);
   if (program.config) {
-    return program.config;
+    return require(path.join(process.cwd(), program.config));
   } else if (fs.existsSync(localConfig)) {
     return require(localConfig);
   } else if (fs.existsSync(localConfig)) {
