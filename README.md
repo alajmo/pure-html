@@ -1,4 +1,11 @@
-# simple_index
+# Pure Html
+
+## Features
+
+* Hot-reload html and css.
+* Inline styling.
+* Html validation.
+* Autoprefixer.
 
 ## Content Creation
 
@@ -10,6 +17,8 @@ Order in which options are set:
 3. Global config file.
 
 ## Development
+
+* Follows [Conventional Commits](https://conventionalcommits.org/).
 
 ## Resources
 
