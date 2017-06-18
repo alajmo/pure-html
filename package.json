@@ -7,8 +7,8 @@
     "pure-html": "./bin/pure-html"
   },
   "scripts": {
-    "dev": "node bin/pure-html",
-    "build": "node bin/pure-html",
+    "dev": "node bin/pure-html -d -s",
+    "build": "node bin/pure-html -s",
     "test": "node test/test.js"
   },
   "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (http://alajmovic.com)",

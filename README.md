@@ -1,6 +1,6 @@
 # Pure Html
 
-Sometimes you just want to create a standard `index.html` with no dependencies, this little plugin helps you do just that, with hot-reloading of html and css!
+Sometimes you just want to create a standard `index.html` with no dependencies, this little plugin helps you do just that with hot-reloading of html and css!
 
 ## Features
 
@@ -9,24 +9,39 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 * Html validation, make sure your html is valid html.
 * Autoprefixer, apply browser specific prefixes for your css.
 
-## Documentation
+## Usage
 
-### Config
+```
+  Usage: pure-html [options]
 
-Order in which options are set:
-1. Settings.
-2. Local config file.
-3. Global config file.
+  A dev environment for creating standalone html files
+
+  Options:
+
+    -h, --help           output usage information
+    -V, --version        output the version number
+    -c, --config [path]  Config file location
+    -d, --dev            Start browsersync
+    -s, --show-config    Show config used
+    -f, --file [file]    Only watch specific file
+
+  Order in which config is loaded:
+
+  1. User manually enters path using -c option
+  2. .purehtmlrc.json found in the current working directory
+  3. .purehtmlrc.json found in the users home directory
+  4. Default .purehtmlrc.json shipped with pure-html
+
+  Examples:
+
+    $ pure-html -d
+    $ pure-html -c purehtml.json
+    $ pure-html -f index.html
+```
+
+Additionally, I can recommend [Base 64 encoding](http://b64.io/) in-case you want to inline svg's.
 
 ## Development
 
-* Follows [Conventional Commits](https://conventionalcommits.org/).
-
-## Resources
-
-* [Base 64 encoding](http://b64.io/)
-* [Browsersync docs](https://www.browsersync.io/docs)
-* [Autoprefixer](https://github.com/postcss/autoprefixer)
-* [Browserstack](https://github.com/scottgonzalez/node-browserstack)
-* [inline-source](https://github.com/popeindustries/inline-source)
+Follows [Conventional Commits](https://conventionalcommits.org/).
 
