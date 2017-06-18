@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 
 const action = require('../lib/server.js');
-const defaultConfig = require('../config/.purehtmlrc.json');
-const pureHtmlConfig = require('../config/config.json');
+const cli = require('../lib/cli.js');
 const fs = require('fs');
 const glob = require('glob');
+const libConfig = require('../config/config.json');
 const os = require('os');
 const path = require('path');
+const pkg = require('../package.json');
 const program = require('commander');
 
 program
-  .version('0.2.0')
-  .description('Serve html files with hot-reload of html and css.')
+  .version(pkg.version)
+  .description('A dev environment for creating standalone html files')
   .option('-c, --config [path]', 'Config file location')
   .option('-d, --dev', 'Start browsersync')
+  .option('-s, --show-config', 'Show config used')
   .option('-f, --file [file]', 'Only watch specific file');
 
 program.on('--help', () => {
@@ -28,22 +30,27 @@ program.on('--help', () => {
 program.parse(process.argv);
 
 function getConfig() {
-  const localConfigPath = path.join(process.cwd(), pureHtmlConfig.configName);
-  const globalConfigPath = path.join(os.homedir(), pureHtmlConfig.configName);
+  const localConfigPath = path.resolve(path.join(process.cwd(), libConfig.configName));
+  const globalConfigPath = path.resolve(path.join(os.homedir(), libConfig.configName));
+  const defaultConfigPath = path.resolve('../config/.purehtmlrc.json');
 
   if (program.config) {
+    program.showConfig ? cli.printConfigUsed({ configType: 'program', file: path.resolve(program.config) }) : '';
     return require(path.join(process.cwd(), program.config));
   }
 
   if (fs.existsSync(localConfigPath)) {
+    program.showConfig ? cli.printConfigUsed({ configType: 'local', file: localConfigPath }): '';
     return require(localConfigPath);
   }
 
   if (fs.existsSync(globalConfigPath)) {
+    program.showConfig ? cli.printConfigUsed({ configType: 'global', file: globalConfigPath }): '';
     return require(globalConfigPath);
   }
 
-  return pureHtmlConfig;
+  program.showConfig ? cli.printConfigUsed({ configType: 'default', file: defaultConfigPath }): '';
+  return require(defaultConfigPath);
 }
 
 function main() {
