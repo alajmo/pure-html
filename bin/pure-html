@@ -19,19 +19,27 @@ program
   .option('-f, --file [file]', 'Only watch specific file');
 
 program.on('--help', () => {
-  console.log('  Order in which config is loaded:');
-  console.log('');
-  console.log('  1. User manually enters path using -c option');
-  console.log('  2. .purehtmlrc.json found in the current working directory');
-  console.log('  3. .purehtmlrc.json found in the users home directory');
-  console.log('  4. Default .purehtmlrc.json shipped with pure-html');
-  console.log('');
-  console.log('  Examples:');
-  console.log('');
-  console.log('    $ pure-html -d');
-  console.log('    $ pure-html -c purehtml.json');
-  console.log('    $ pure-html -f index.html');
-  console.log('');
+  console.log(`  Config Format:
+
+    {
+      "src": "src",    // Html source
+      "dest": "dist",  // Html destination
+      "port": 3001     // Listen on port
+    }
+
+  Order in Which Config is Loaded:
+
+    1. User manually enters path using -c option
+    2. .purehtmlrc.json found in the current working directory
+    3. .purehtmlrc.json found in the users home directory
+    4. Default .purehtmlrc.json shipped with pure-html
+
+  Examples:
+
+    $ pure-html -d
+    $ pure-html -c purehtml.json
+    $ pure-html -f index.html
+  `);
 });
 
 program.parse(process.argv);

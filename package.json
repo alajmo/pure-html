@@ -2,7 +2,7 @@
   "name": "pure-html",
   "version": "0.3.2",
   "description": "",
-  "main": "index.js",
+  "main": "bin/pure-html",
   "bin": {
     "pure-html": "./bin/pure-html"
   },
@@ -11,7 +11,7 @@
     "build": "node bin/pure-html -s",
     "test": "node test/test.js"
   },
-  "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (http://alajmovic.com)",
+  "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (https://www.alajmovic.com)",
   "license": "MIT",
   "devDependencies": {
     "tape": "^4.6.3"
