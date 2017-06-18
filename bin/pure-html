@@ -32,7 +32,7 @@ program.parse(process.argv);
 function getConfig() {
   const localConfigPath = path.resolve(path.join(process.cwd(), libConfig.configName));
   const globalConfigPath = path.resolve(path.join(os.homedir(), libConfig.configName));
-  const defaultConfigPath = path.resolve('../config/.purehtmlrc.json');
+  const defaultConfigPath = '../config/.purehtmlrc.json';
 
   if (program.config) {
     program.showConfig ? cli.printConfigUsed({ configType: 'program', file: path.resolve(program.config) }) : '';
