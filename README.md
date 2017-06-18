@@ -1,13 +1,15 @@
 # Pure Html
 
+Sometimes you just want to create a standard `index.html` with no dependencies, this little plugin helps you do just that, with hot-reloading of html and css!
+
 ## Features
 
-* Hot-reload html and css.
-* Inline styling.
-* Html validation.
-* Autoprefixer.
+* Hot-reload html and css, makes development smoother.
+* Inline styling, inlines your css and js.
+* Html validation, make sure your html is valid html.
+* Autoprefixer, apply browser specific prefixes for your css.
 
-## Content Creation
+## Documentation
 
 ### Config
 
@@ -27,8 +29,4 @@ Order in which options are set:
 * [Autoprefixer](https://github.com/postcss/autoprefixer)
 * [Browserstack](https://github.com/scottgonzalez/node-browserstack)
 * [inline-source](https://github.com/popeindustries/inline-source)
-
-* [Node CLI](https://developer.atlassian.com/blog/2015/11/scripting-with-node/)
-* [Node CLI](https://www.smashingmagazine.com/2017/03/interactive-command-line-application-node-js/)
-* [Node CLI](https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/)
 
