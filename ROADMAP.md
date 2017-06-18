@@ -2,7 +2,8 @@
 
 ## Work in Progress
 
-* Browsersync serve from src instead of dest.
+* Preserve src folder hierarchy.
+* Option to turn off html validation.
 
 ## Backlog Features
 
@@ -13,6 +14,7 @@
 * Pass in browserSync config file.
 * Better error handling.
 * CLI Output option.
+* Browsersync serve from src instead of dest.
 
 ## Development
 
