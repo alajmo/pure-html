@@ -6,7 +6,7 @@ const html5Lint = require('html5-lint');
 const test = require('tape');
 
 test('Check that index.html is generated', t => {
-  child.execSync('node bin/cli.js -c test/files/config.json', {
+  child.execSync('node bin/pure-html -c test/files/config.json', {
     stdio: [0, 1, 2]
   });
   t.equal(fs.existsSync('test/files/dest/index.html'), true, 'File exists.');

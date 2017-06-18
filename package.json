@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "pure-html": "bin/cli.js"
+    "pure-html": "./bin/pure-html"
   },
   "scripts": {
     "dev": "node index.js",
@@ -15,17 +15,16 @@
   "license": "MIT",
   "devDependencies": {
     "html5-lint": "^0.3.0",
-    "tape": "^4.6.3"
-  },
-  "dependencies": {
-    "browser-sync": "^2.18.8",
+    "tape": "^4.6.3",
+    "browser-sync": "^2.18.12",
     "bs-html-injector": "^3.0.3",
     "commander": "^2.9.0",
     "del": "^2.2.2",
     "glob": "^7.1.2",
-    "gulp": "github:gulpjs/gulp#4.0",
-    "inline-source": "^5.2.2"
+    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "inline-source": "^5.2.3"
   },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git://github.com/samiralajmovic/pure-html.git"

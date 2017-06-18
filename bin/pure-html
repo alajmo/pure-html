@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const action = require('../lib/server.js');
 const defaultConfig = require('../config/.purehtmlrc.json');
 const pureHtmlConfig = require('../config/config.json');
@@ -9,11 +11,21 @@ const program = require('commander');
 
 program
   .version('0.2.0')
+  .description('Serve html files with hot-reload of html and css.')
   .option('-c, --config [path]', 'Config file location')
   .option('-d, --dev', 'Start browsersync')
-  .option('-f, --file [file]', 'Only watch specific files')
-  .parse(process.argv);
+  .option('-f, --file [file]', 'Only watch specific file');
 
+program.on('--help', () => {
+  console.log('  Examples:');
+  console.log('');
+  console.log('    $ pure-html -d');
+  console.log('    $ pure-html -c purehtml.json');
+  console.log('    $ pure-html -f index.html');
+  console.log('');
+});
+
+program.parse(process.argv);
 
 function getConfig() {
   const localConfigPath = path.join(process.cwd(), pureHtmlConfig.configName);
