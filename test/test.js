@@ -3,7 +3,7 @@ const config = require('./files/config.json');
 const del = require('del');
 const fs = require('fs');
 const html5Lint = require('html5-lint');
-const test = require('tape');
+const test = require('tap');
 
 test('Check that index.html is generated', t => {
   child.execSync('node bin/pure-html -c test/files/config.json', {

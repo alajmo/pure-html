@@ -1,7 +1,7 @@
 {
   "name": "pure-html",
   "version": "0.3.3",
-  "description": "",
+  "description": "A dev environment for creating standalone html files",
   "main": "bin/pure-html",
   "bin": {
     "pure-html": "./bin/pure-html"
@@ -14,7 +14,8 @@
   "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (https://www.alajmovic.com)",
   "license": "MIT",
   "devDependencies": {
-    "tape": "^4.6.3"
+    "husky": "^0.13.4",
+    "tap": "^10.5.1"
   },
   "dependencies": {
     "browser-sync": "^2.18.12",
