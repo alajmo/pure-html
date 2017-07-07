@@ -9,12 +9,15 @@
   "scripts": {
     "dev": "node bin/pure-html -d -s",
     "build": "node bin/pure-html -s",
-    "test": "node test/test.js"
+    "test": "node test/test.js",
+    "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"lib/**/*.js\"",
+    "prepush": "npm test"
   },
   "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (https://www.alajmovic.com)",
   "license": "MIT",
   "devDependencies": {
     "husky": "^0.13.4",
+    "prettier": "^1.5.2",
     "tap": "^10.5.1"
   },
   "dependencies": {
