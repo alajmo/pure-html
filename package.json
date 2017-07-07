@@ -10,13 +10,15 @@
     "dev": "node bin/pure-html -d -s",
     "build": "node bin/pure-html -s",
     "test": "node test/test.js",
-    "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"lib/**/*.js\"",
-    "prepush": "npm test"
+    "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"lib/**/*.js\" && npm test",
+    "prepush": "npm test",
+    "prepublish": "pkg-ok"
   },
   "author": "Samir Alajmovic <alajmovic.samir@gmail.com> (https://www.alajmovic.com)",
   "license": "MIT",
   "devDependencies": {
     "husky": "^0.13.4",
+    "pkg-ok": "^1.1.0",
     "prettier": "^1.5.2",
     "tap": "^10.7.0"
   },
