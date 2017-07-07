@@ -4,10 +4,10 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 
 ## Features
 
-* Hot-reload html and css, makes development smoother.
-* Inline styling, inlines your css and js.
-* Html validation, make sure your html is valid html.
-* Autoprefixer, apply browser specific prefixes for your css.
+* Autoprefixer
+* Hot-reloading of HTML and CSS
+* Html Validation
+* Inline CSS
 
 ## Requirements
 
