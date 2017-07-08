@@ -31,7 +31,8 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "html-autoprefixer": "^0.3.8",
     "html5-lint": "^0.3.0",
-    "inline-source": "^5.2.3"
+    "inline-source": "^5.2.3",
+    "mkdirp": "^0.5.1"
   },
   "repository": {
     "type": "git",
