@@ -45,34 +45,49 @@ program.on('--help', () => {
 program.parse(process.argv);
 
 function getConfig() {
-  const localConfigPath = path.resolve(path.join(process.cwd(), libConfig.configName));
-  const globalConfigPath = path.resolve(path.join(os.homedir(), libConfig.configName));
+  const localConfigPath = path.resolve(
+    path.join(process.cwd(), libConfig.configName)
+  );
+  const globalConfigPath = path.resolve(
+    path.join(os.homedir(), libConfig.configName)
+  );
   const defaultConfigPath = '../config/.purehtmlrc.json';
 
   if (program.config) {
-    program.showConfig ? cli.printConfigUsed({ configType: 'program', file: path.resolve(program.config) }) : '';
+    program.showConfig
+      ? cli.printConfigUsed({
+          configType: 'program',
+          file: path.resolve(program.config)
+        })
+      : '';
     return require(path.join(process.cwd(), program.config));
   }
 
   if (fs.existsSync(localConfigPath)) {
-    program.showConfig ? cli.printConfigUsed({ configType: 'local', file: localConfigPath }): '';
+    program.showConfig
+      ? cli.printConfigUsed({ configType: 'local', file: localConfigPath })
+      : '';
     return require(localConfigPath);
   }
 
   if (fs.existsSync(globalConfigPath)) {
-    program.showConfig ? cli.printConfigUsed({ configType: 'global', file: globalConfigPath }): '';
+    program.showConfig
+      ? cli.printConfigUsed({ configType: 'global', file: globalConfigPath })
+      : '';
     return require(globalConfigPath);
   }
 
-  program.showConfig ? cli.printConfigUsed({ configType: 'default', file: defaultConfigPath }): '';
+  program.showConfig
+    ? cli.printConfigUsed({ configType: 'default', file: defaultConfigPath })
+    : '';
   return require(defaultConfigPath);
 }
 
 function main() {
   const config = getConfig();
-  const files = program.files
-    ? program.files
-    : glob.sync(`${config.src}/**/*.html`);
+  const files = glob.sync(
+    program.files ? program.files : `${config.src}/**/*.html`
+  );
 
   if (program.dev) {
     action.dev(config, files);
