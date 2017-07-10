@@ -16,7 +16,7 @@ program
   .option('-c, --config [path]', 'config file location')
   .option('-d, --dev', 'start browsersync')
   .option('-s, --show-config', 'show config used')
-  .option('-f, --file [file]', 'only watch a specific file');
+  .option('-f, --files [files]', 'only watch a specific file');
 
 program.on('--help', () => {
   console.log(`  Config format:
