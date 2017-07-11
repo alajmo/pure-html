@@ -55,7 +55,7 @@ function getConfig() {
   const globalConfigPath = path.resolve(
     path.join(os.homedir(), libConfig.configName)
   );
-  const defaultConfigPath = '../config/.purehtmlrc.json';
+  const defaultConfigPath = '../config/default.purehtmlrc.json';
 
   if (program.config) {
     program.showConfig
@@ -75,6 +75,7 @@ function getConfig() {
   }
 
   if (fs.existsSync(globalConfigPath)) {
+
     program.showConfig
       ? cli.printConfigUsed({ configType: 'global', file: globalConfigPath })
       : '';
@@ -84,6 +85,7 @@ function getConfig() {
   program.showConfig
     ? cli.printConfigUsed({ configType: 'default', file: defaultConfigPath })
     : '';
+
   return require(defaultConfigPath);
 }
 

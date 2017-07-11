@@ -1,6 +1,5 @@
 {
   "src": "./test/files/src",
   "dest": "./test/files/dist",
-  "port": 1337,
-  "htmlLint": true
+  "port": 1337
 }

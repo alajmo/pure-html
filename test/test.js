@@ -22,7 +22,7 @@ test('Files should be generated', t => {
 });
 
 test('Config file should exist', (t) => {
-  t.equal(fs.existsSync('config/.purehtmlrc.json'), true, 'default.config.json exists.');
+  t.equal(fs.existsSync('config/default.purehtmlrc.json'), true, 'default config exists.');
   t.equal(fs.existsSync('config/config.json'), true, 'config.json exists.');
   t.end();
 });
