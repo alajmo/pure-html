@@ -16,6 +16,7 @@ program
   .option('-c, --config [path]', 'config file location')
   .option('-d, --dev', 'start browsersync')
   .option('-s, --show-config', 'show config used')
+  .option('-i, --src [path]', 'Input path')
   .option('-f, --files [files]', 'only watch a specific file')
   .option('-o, --dest [path]', 'Output path')
   .option('-p, --port [port]', 'Port browswersync listens on')
@@ -88,7 +89,8 @@ function getConfig() {
 
 function getOptions(config) {
   return Object.freeze({
-    src: program.files || config.src,
+    files: program.files,
+    src: program.src || config.src,
     dest: program.dest || config.dest,
     port: program.port || config.port,
     htmlLint: program.htmlLint || config.htmlLint
@@ -97,10 +99,10 @@ function getOptions(config) {
 
 function main() {
   const config = getConfig();
-  const files = glob.sync(
-    program.files ? program.files : `${config.src}/**/*.html`
-  );
   const options = getOptions(config);
+  const files = glob.sync(
+    program.files ? program.files : `${options.src}/**/*.html`
+  );
   if (program.dev) {
     action.dev(options, files);
   } else {
