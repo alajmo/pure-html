@@ -101,10 +101,6 @@ function main() {
     program.files ? program.files : `${config.src}/**/*.html`
   );
   const options = getOptions(config);
-  console.log(program.htmlLint);
-  console.log(config.htmlLint);
-
-  console.log(options);
   if (program.dev) {
     action.dev(options, files);
   } else {
