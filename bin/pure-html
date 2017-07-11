@@ -16,7 +16,10 @@ program
   .option('-c, --config [path]', 'config file location')
   .option('-d, --dev', 'start browsersync')
   .option('-s, --show-config', 'show config used')
-  .option('-f, --files [files]', 'only watch a specific file');
+  .option('-f, --files [files]', 'only watch a specific file')
+  .option('-o, --dest [path]', 'Output path')
+  .option('-p, --port [port]', 'Port browswersync listens on')
+  .option('-l, --html-lint [true|false]', 'Invoke html lint (default false)');
 
 program.on('--help', () => {
   console.log(`  Config format:
@@ -83,16 +86,29 @@ function getConfig() {
   return require(defaultConfigPath);
 }
 
+function getOptions(config) {
+  return Object.freeze({
+    src: program.files || config.src,
+    dest: program.dest || config.dest,
+    port: program.port || config.port,
+    htmlLint: program.htmlLint || config.htmlLint
+  });
+}
+
 function main() {
   const config = getConfig();
   const files = glob.sync(
     program.files ? program.files : `${config.src}/**/*.html`
   );
+  const options = getOptions(config);
+  console.log(program.htmlLint);
+  console.log(config.htmlLint);
 
+  console.log(options);
   if (program.dev) {
-    action.dev(config, files);
+    action.dev(options, files);
   } else {
-    action.build(config, files);
+    action.build(options, files);
   }
 }
 main();
