@@ -20,7 +20,7 @@ program
   .option('-f, --files [files]', 'only watch a specific file')
   .option('-o, --dest [path]', 'Output path')
   .option('-p, --port [port]', 'Port browswersync listens on')
-  .option('-l, --html-lint [true|false]', 'Invoke html lint (default false)');
+  .option('-l, --html-lint', 'Invoke html lint');
 
 program.on('--help', () => {
   console.log(`  Config format:
