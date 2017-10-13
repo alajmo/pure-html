@@ -16,39 +16,45 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 ## Usage
 
 ```
- Usage: pure-html [options]
+Usage: pure-html [options]
 
- A dev environment for creating standalone html files
+Command line tool for creating standalone html files
 
- Options:
 
-   -h, --help           output usage information
-   -V, --version        output the version number
-   -c, --config [path]  Config file location
-   -d, --dev            Start browsersync
-   -s, --show-config    Show config used
-   -f, --file [file]    Only watch specific file
+Options:
 
- Config Format:
+  -V, --version        output the version number
+  -c, --config [path]  config file location
+  -d, --dev            start browsersync
+  -s, --show-config    show config used
+  -i, --src [path]     Input path
+  -f, --files [files]  only watch a specific file
+  -o, --dest [path]    Output path
+  -p, --port [port]    Port browswersync listens on
+  -l, --html-lint      Invoke html lint
+  -h, --help           output usage information
+Config format:
 
-   {
-     "src": "src",    // Html source
-     "dest": "dist",  // Html destination
-     "port": 3001     // Listen on port
-   }
+  {
+    "src": "src",    // Html source
+    "dest": "dist",  // Html destination
+    "port": 3001     // Listen on port
+  }
 
- Order in Which Config is Loaded:
+Config priority order:
 
-   1. User manually enters path using -c option
-   2. .purehtmlrc.json found in the current working directory
-   3. .purehtmlrc.json found in the users home directory
-   4. Default .purehtmlrc.json shipped with pure-html
+  1. manually entered config using -c option
+  2. .purehtmlrc.json found in the current working directory
+  3. .purehtmlrc.json found in the user home directory
+  4. default .purehtmlrc.json shipped with pure-html
 
- Examples:
+Examples:
 
-   $ pure-html -d
-   $ pure-html -c purehtml.json
-   $ pure-html -f index.html
+  $ pure-html -d
+  $ pure-html -c purehtml.json
+  $ pure-html -f index.html
+  $ pure-html -d -i input-folder -o output-folder -p 1337
+
 ```
 
 Additionally, I can recommend [Base 64 encoding](http://b64.io/) in-case you want to inline svg's.

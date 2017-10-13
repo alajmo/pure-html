@@ -43,6 +43,7 @@ program.on('--help', () => {
     $ pure-html -d
     $ pure-html -c purehtml.json
     $ pure-html -f index.html
+    $ pure-html -d -i input-folder -o output-folder -p 1337
   `);
 });
 
