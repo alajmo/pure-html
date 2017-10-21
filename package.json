@@ -1,13 +1,13 @@
 {
   "name": "pure-html",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A dev environment for creating standalone html files",
   "main": "bin/pure-html",
   "bin": {
     "pure-html": "./bin/pure-html"
   },
   "scripts": {
-    "dev": "node bin/pure-html -d -s",
+    "dev": "node bin/pure-html -d dist -s temp",
     "build": "node bin/pure-html -s",
     "test": "node test/test.js",
     "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"src/**/*.js\" && npm test && pjv package.json",
@@ -29,13 +29,13 @@
     "bs-html-injector": "3.0.3",
     "commander": "2.11.0",
     "del": "3.0.0",
+    "fs-extra": "^4.0.2",
     "glob": "7.1.2",
-    "globby": "^6.1.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
-    "inline-source": "5.2.3",
-    "mkdirp": "0.5.1"
+    "inline-source": "5.2.5",
+    "jsdom": "^11.3.0"
   },
   "repository": {
     "type": "git",

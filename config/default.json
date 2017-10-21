@@ -2,6 +2,5 @@
   "src": ".",
   "port": 3000,
   "watch": false,
-  "inline": true,
   "htmlLint": false
 }
