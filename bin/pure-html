@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const action = require('../lib/server.js');
-const cli = require('../lib/cli.js');
 const fs = require('fs');
 const glob = require('glob');
 const os = require('os');
@@ -14,11 +13,23 @@ program
   .version(pkg.version)
   .description('Command line tool for creating standalone html files')
   .option('-w, --watch', `Start browsersync. Default ${defaultConfig.watch}`)
-  .option('-s, --src [path]', `Input source folder. Default ${defaultConfig.src}`)
-  .option('-d, --dest [path]', `Output output folder. Default ${defaultConfig.dest}`)
-  .option('-p, --port [port]', `Browswersync port listens. Default ${defaultConfig.port}`)
+  .option(
+    '-s, --src [path]',
+    `Input source folder. Default ${defaultConfig.src}`
+  )
+  .option(
+    '-d, --dest [path]',
+    `Output output folder. Default ${defaultConfig.dest}`
+  )
+  .option(
+    '-p, --port [port]',
+    `Browswersync port listens. Default ${defaultConfig.port}`
+  )
   .option('-i, --inline', `Inline assets. Default ${defaultConfig.inline}`)
-  .option('-l, --html-lint', `Utilize HTML lint. Default ${defaultConfig.htmlLint}`);
+  .option(
+    '-l, --html-lint',
+    `Utilize HTML lint. Default ${defaultConfig.htmlLint}`
+  );
 
 program.on('--help', () => {
   return `
@@ -42,16 +53,23 @@ function getOptions() {
   });
 }
 
+function appendLeadingDot(p) {
+  return p[0] === '.' && p[1] === '/' ? p : `./${p}`;
+}
+
 function main() {
   const options = getOptions();
-  const files = glob.sync(
-    program.files ? program.files : `${options.src}/**/*.html`
+  const htmlFiles = glob.sync(
+    program.files
+      ? program.files
+      : `${appendLeadingDot(options.src)}/**/*.html`,
+    { ignore: [`${options.dest}/**/*`] }
   );
 
   if (program.watch) {
-    action.dev(options, files);
+    action.dev(options, htmlFiles);
   } else {
-    action.build(options, files);
+    action.build(options, htmlFiles);
   }
 }
 main();

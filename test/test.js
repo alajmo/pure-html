@@ -32,10 +32,6 @@ test('Files should be generated', t => {
     'Directory file level 1 test'
   );
 
-  // TODO: Check validitity of html files.
-  // const html = fs.readFileSync('test/files/dist/index.html');
-  // const html2 = fs.readFileSync('test/files/dist/index2.html');
-
   t.end();
   cleanUp();
 });

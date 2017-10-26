@@ -30,6 +30,7 @@
     "commander": "2.11.0",
     "del": "3.0.0",
     "glob": "7.1.2",
+    "globby": "^6.1.0",
     "gulp": "github:gulpjs/gulp#4.0",
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
