@@ -50,7 +50,6 @@ function getOptions() {
   }
 
   return Object.freeze({
-    files: program.files || [],
     src: program.src || defaultConfig.src,
     dest: program.dest,
     port: program.port || defaultConfig.port,
@@ -58,18 +57,24 @@ function getOptions() {
   });
 }
 
-function appendLeadingDot(p) {
-  return p[0] === '.' && p[1] === '/' ? p : `./${p}`;
+function formatPath(p) {
+  if (p[0] === '/') {
+    // Absolute path.
+    return p;
+  } else if (p[0] === '.' && p[1] === '/') {
+    // Relative path.
+    return p;
+  } else {
+    // Missing ./, this is needed for the glob pattern.
+    return `./${p}`;
+  }
 }
 
 function main() {
   const options = getOptions();
-  const htmlFiles = glob.sync(
-    program.files
-      ? program.files
-      : `${appendLeadingDot(options.src)}/**/*.html`,
-    { ignore: [`${options.dest}/**/*`] }
-  );
+  const htmlFiles = glob.sync(`${formatPath(options.src)}/**/*.html`, {
+    ignore: [`${options.dest}/**/*`]
+  });
 
   if (program.watch) {
     action.dev(options, htmlFiles);
