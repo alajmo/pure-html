@@ -4,8 +4,8 @@ const action = require('../lib/server.js');
 const cli = require('../lib/cli.js');
 const fs = require('fs');
 const glob = require('glob');
-const libConfig = require('../config/config.json');
 const os = require('os');
+const defaultConfig = require('../config/default.json');
 const path = require('path');
 const pkg = require('../package.json');
 const program = require('commander');
@@ -13,100 +13,42 @@ const program = require('commander');
 program
   .version(pkg.version)
   .description('Command line tool for creating standalone html files')
-  .option('-c, --config [path]', 'config file location')
-  .option('-d, --dev', 'start browsersync')
-  .option('-s, --show-config', 'show config used')
-  .option('-i, --src [path]', 'Input path')
-  .option('-f, --files [files]', 'only watch a specific file')
-  .option('-o, --dest [path]', 'Output path')
-  .option('-p, --port [port]', 'Port browswersync listens on')
-  .option('-l, --html-lint', 'Invoke html lint');
+  .option('-w, --watch', `Start browsersync. Default ${defaultConfig.watch}`)
+  .option('-s, --src [path]', `Input source folder. Default ${defaultConfig.src}`)
+  .option('-d, --dest [path]', `Output output folder. Default ${defaultConfig.dest}`)
+  .option('-p, --port [port]', `Browswersync port listens. Default ${defaultConfig.port}`)
+  .option('-i, --inline', `Inline assets. Default ${defaultConfig.inline}`)
+  .option('-l, --html-lint', `Utilize HTML lint. Default ${defaultConfig.htmlLint}`);
 
 program.on('--help', () => {
-  console.log(`  Config format:
-
-    {
-      "src": "src",    // Html source
-      "dest": "dist",  // Html destination
-      "port": 3001     // Listen on port
-    }
-
-  Config priority order:
-
-    1. manually entered config using -c option
-    2. .purehtmlrc.json found in the current working directory
-    3. .purehtmlrc.json found in the user home directory
-    4. default .purehtmlrc.json shipped with pure-html
-
+  return `
   Examples:
 
-    $ pure-html -d
-    $ pure-html -c purehtml.json
+    $ pure-html -d -i src -o dist
     $ pure-html -f index.html
-    $ pure-html -d -i input-folder -o output-folder -p 1337
-  `);
+    $ pure-html -d -i input-folder -o output-folder -p 8000
+  `;
 });
 
 program.parse(process.argv);
 
-function getConfig() {
-  const localConfigPath = path.resolve(
-    path.join(process.cwd(), libConfig.configName)
-  );
-  const globalConfigPath = path.resolve(
-    path.join(os.homedir(), libConfig.configName)
-  );
-  const defaultConfigPath = '../config/default.purehtmlrc.json';
-
-  if (program.config) {
-    program.showConfig
-      ? cli.printConfigUsed({
-          configType: 'program',
-          file: path.resolve(program.config)
-        })
-      : '';
-    return require(path.join(process.cwd(), program.config));
-  }
-
-  if (fs.existsSync(localConfigPath)) {
-    program.showConfig
-      ? cli.printConfigUsed({ configType: 'local', file: localConfigPath })
-      : '';
-    return require(localConfigPath);
-  }
-
-  if (fs.existsSync(globalConfigPath)) {
-
-    program.showConfig
-      ? cli.printConfigUsed({ configType: 'global', file: globalConfigPath })
-      : '';
-    return require(globalConfigPath);
-  }
-
-  program.showConfig
-    ? cli.printConfigUsed({ configType: 'default', file: defaultConfigPath })
-    : '';
-
-  return require(defaultConfigPath);
-}
-
-function getOptions(config) {
+function getOptions() {
   return Object.freeze({
-    files: program.files,
-    src: program.src || config.src,
-    dest: program.dest || config.dest,
-    port: program.port || config.port,
-    htmlLint: program.htmlLint || config.htmlLint
+    files: program.files || [],
+    src: program.src || defaultConfig.src,
+    dest: program.dest || defaultConfig.dest,
+    port: program.port || defaultConfig.port,
+    htmlLint: program.htmlLint || defaultConfig.htmlLint
   });
 }
 
 function main() {
-  const config = getConfig();
-  const options = getOptions(config);
+  const options = getOptions();
   const files = glob.sync(
     program.files ? program.files : `${options.src}/**/*.html`
   );
-  if (program.dev) {
+
+  if (program.watch) {
     action.dev(options, files);
   } else {
     action.build(options, files);
