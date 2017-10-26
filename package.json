@@ -10,7 +10,7 @@
     "dev": "node bin/pure-html -d -s",
     "build": "node bin/pure-html -s",
     "test": "node test/test.js",
-    "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"lib/**/*.js\" && npm test && pjv package.json",
+    "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"src/**/*.js\" && npm test && pjv package.json",
     "prepush": "npm test && pjv package.json",
     "prepublish": "pkg-ok && pjv package.json"
   },
