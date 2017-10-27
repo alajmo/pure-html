@@ -7,7 +7,8 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 * Autoprefixer
 * Hot-reloading of HTML and CSS
 * Html Validation
-* Inline CSS
+* Inline CSS / JS
+* No inline CSS / JS
 
 ## Requirements
 
@@ -16,44 +17,26 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 ## Usage
 
 ```
-Usage: pure-html [options]
 
-Command line tool for creating standalone html files
+  Usage: pure-html [options]
+
+  Command line tool for creating standalone html files.
 
 
-Options:
+  Options:
 
-  -V, --version        output the version number
-  -c, --config [path]  config file location
-  -d, --dev            start browsersync
-  -s, --show-config    show config used
-  -i, --src [path]     Input path
-  -f, --files [files]  only watch a specific file
-  -o, --dest [path]    Output path
-  -p, --port [port]    Port browswersync listens on
-  -l, --html-lint      Invoke html lint
-  -h, --help           output usage information
-Config format:
+    -V, --version      output the version number
+    -w, --watch        start browsersync. Default false
+    -s, --src <path>   input source folder. Default current working directory
+    -d, --dest <path>  output output folder
+    -p, --port <port>  port browswersync listens on. Default 3000
+    -l, --html-lint    enable HTML lint. Default false
+    -h, --help         output usage information
 
-  {
-    "src": "src",    // Html source
-    "dest": "dist",  // Html destination
-    "port": 3001     // Listen on port
-  }
+  Examples:
 
-Config priority order:
-
-  1. manually entered config using -c option
-  2. .purehtmlrc.json found in the current working directory
-  3. .purehtmlrc.json found in the user home directory
-  4. default .purehtmlrc.json shipped with pure-html
-
-Examples:
-
-  $ pure-html -d
-  $ pure-html -c purehtml.json
-  $ pure-html -f index.html
-  $ pure-html -d -i input-folder -o output-folder -p 1337
+    $ pure-html -w -s src -d dist
+    $ pure-html -s input-folder -d output-folder -p 8000
 
 ```
 
