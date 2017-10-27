@@ -1,10 +1,10 @@
-module.exports = config => ({
+module.exports = ({ src, dest }) => ({
   src: {
-    css: `${config.src}/**/*.css`,
-    js: `${config.src}/**/*.js`,
-    html: `${config.src}/**/*.html`
+    css: `${src}/**/*.css`,
+    js: `${src}/**/*.js`,
+    html: `${src}/**/*.html`
   },
   dest: {
-    html: `${config.dest}/**/*.html`
+    html: `${dest}/**/*.html`
   }
 });

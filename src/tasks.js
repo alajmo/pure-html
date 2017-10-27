@@ -30,7 +30,7 @@ function clean(files) {
 }
 
 function watch(htmlFiles, config, cb) {
-  const globs = Globs(config);
+  const globs = Globs({ src: config.src, dest: config.dest });
 
   gulp.watch(
     [globs.src.html, `!${config.dest}`],
@@ -61,7 +61,7 @@ function initFolders(dest, cb) {
 }
 
 function initBrowsersync(config, cb) {
-  const globs = Globs(config);
+  const globs = Globs({ src: config.src, dest: config.dest });
 
   bs.use(htmlInjector, {
     files: [globs.dest.html]
