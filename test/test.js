@@ -5,98 +5,141 @@ const html5Lint = require('html5-lint');
 const path = require('path');
 const test = require('tap').test;
 
-test('Files should be generated', t => {
-  const src = 'test/files/src';
-  const dest = 'test/files/dist';
+main();
 
-  child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
-    stdio: [0, 1, 2]
+function main() {
+  generateFiles();
+  generateFilesPrefixDot();
+  generateFilesAbsolutePath();
+  generateAssets();
+}
+
+function generateFiles() {
+  test('Files should be generated', t => {
+    const src = 'test/files/src';
+    const dest = 'test/files/dist';
+
+    child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
+      stdio: [0, 1, 2]
+    });
+
+    t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
+
+    t.equal(
+      fs.existsSync('test/files/dist/index2.html'),
+      true,
+      'Directory file level 0 test'
+    );
+
+    t.equal(
+      fs.existsSync('test/files/dist/example/index.html'),
+      true,
+      'Directory file level 1 test'
+    );
+
+    t.equal(
+      fs.existsSync('test/files/dist/example/example-2/index-2.html'),
+      true,
+      'Directory file level 1 test'
+    );
+
+    t.end();
+    del.sync(dest);
   });
+}
 
-  t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
+function generateFilesPrefixDot() {
+  test('Files should be generated when prefixing path by dot', t => {
+    const src = './test/files/src';
+    const dest = './test/files/dist';
 
-  t.equal(
-    fs.existsSync('test/files/dist/index2.html'),
-    true,
-    'Directory file level 0 test'
-  );
+    child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
+      stdio: [0, 1, 2]
+    });
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/index.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/example-2/index-2.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(
+      fs.existsSync('test/files/dist/index2.html'),
+      true,
+      'Directory file level 0 test'
+    );
 
-  t.end();
-  del.sync(dest);
-});
+    t.equal(
+      fs.existsSync('test/files/dist/example/index.html'),
+      true,
+      'Directory file level 1 test'
+    );
 
-test('Files should be generated when prefixing path by dot', t => {
-  const src = './test/files/src';
-  const dest = './test/files/dist';
+    t.equal(
+      fs.existsSync('test/files/dist/example/example-2/index-2.html'),
+      true,
+      'Directory file level 1 test'
+    );
 
-  child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
-    stdio: [0, 1, 2]
+    t.end();
+    del.sync(dest);
   });
+}
 
-  t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
+function generateFilesAbsolutePath() {
+  test('Files should be generated when using absolute path', t => {
+    const src = path.resolve(path.join(__dirname, './files/src'));
+    const dest = path.resolve(path.join(__dirname, './files/dist'));
 
-  t.equal(
-    fs.existsSync('test/files/dist/index2.html'),
-    true,
-    'Directory file level 0 test'
-  );
+    child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
+      stdio: [0, 1, 2]
+    });
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/index.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/example-2/index-2.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(
+      fs.existsSync('test/files/dist/index2.html'),
+      true,
+      'Directory file level 0 test'
+    );
 
-  t.end();
-  del.sync(dest);
-});
+    t.equal(
+      fs.existsSync('test/files/dist/example/index.html'),
+      true,
+      'Directory file level 1 test'
+    );
 
-test('Files should be generated when using absolute path', t => {
-  const src = path.resolve(path.join(__dirname, './files/src'));
-  const dest = path.resolve(path.join(__dirname, './files/dist'));
+    t.equal(
+      fs.existsSync('test/files/dist/example/example-2/index-2.html'),
+      true,
+      'Directory file level 1 test'
+    );
 
-  child.execSync(`node bin/pure-html -s ${src} -d ${dest} -l`, {
-    stdio: [0, 1, 2]
+    t.end();
+    del.sync(dest);
   });
+}
 
-  t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
+function generateAssets() {
+  test('Assets with inline attribute should be inlined', t => {
+    const src = 'test/files/src2';
+    const dest = 'test/files/dist2';
 
-  t.equal(
-    fs.existsSync('test/files/dist/index2.html'),
-    true,
-    'Directory file level 0 test'
-  );
+    child.execSync(`node bin/pure-html -s ${src} -d ${dest}`, {
+      stdio: [0, 1, 2]
+    });
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/index.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(
+      fs.existsSync('test/files/dist2/index.html'),
+      true,
+      'Directory file level 0 test'
+    );
 
-  t.equal(
-    fs.existsSync('test/files/dist/example/example-2/index-2.html'),
-    true,
-    'Directory file level 1 test'
-  );
+    t.equal(fs.existsSync('test/files/dist2/no-inline-script.js'), true);
 
-  t.end();
-  del.sync(dest);
-});
+    t.equal(fs.existsSync('test/files/dist2/no-inline-style.css'), true);
+
+    t.equal(fs.existsSync('test/files/dist2/nested/no-inline-script.js'), true);
+
+    t.equal(fs.existsSync('test/files/dist2/nested/no-inline-style.css'), true);
+
+    t.end();
+    del.sync(dest);
+  });
+}
