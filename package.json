@@ -7,8 +7,8 @@
     "pure-html": "./bin/pure-html"
   },
   "scripts": {
-    "dev": "node bin/pure-html -d dist -s temp",
-    "build": "node bin/pure-html -s",
+    "start": "node bin/pure-html -p 3000 -w -s examples/src -d examples/dist",
+    "build": "node bin/pure-html -s examples/src -d examples/dist",
     "test": "node test/test.js",
     "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"src/**/*.js\" && npm test && pjv package.json",
     "prepush": "npm test && pjv package.json",
