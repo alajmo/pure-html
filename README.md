@@ -27,16 +27,16 @@ Sometimes you just want to create a standard `index.html` with no dependencies, 
 
     -V, --version      output the version number
     -w, --watch        start browsersync. Default false
-    -s, --src <path>   input source folder. Default current working directory
-    -d, --dest <path>  output output folder
+    -s, --src <path>   source folder. Default current working directory
+    -d, --dest <path>  destination folder. Required
     -p, --port <port>  port browswersync listens on. Default 3000
     -l, --html-lint    enable HTML lint. Default false
     -h, --help         output usage information
 
   Examples:
 
-    $ pure-html -w -s src -d dist
-    $ pure-html -s input-folder -d output-folder -p 8000
+    $ pure-html -w -p 8000 -s src -d dist
+    $ pure-html -d output-folder
 
 ```
 

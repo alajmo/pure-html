@@ -15,11 +15,11 @@ program
   .option('-w, --watch', `start browsersync. Default ${defaultConfig.watch}`)
   .option(
     '-s, --src <path>',
-    `input source folder. Default current working directory`
+    `source folder. Default current working directory`
   )
   .option(
     '-d, --dest <path>',
-    `output output folder`
+    `output folder. Required`
   )
   .option(
     '-p, --port <port>',
@@ -34,8 +34,8 @@ program.on('--help', () => {
   console.log(`
   Examples:
 
-    $ pure-html -w -s src -d dist
-    $ pure-html -s input-folder -d output-folder -p 8000
+    $ pure-html -w -p 8000 -s src -d dist
+    $ pure-html -d output-folder
   `);
 });
 
