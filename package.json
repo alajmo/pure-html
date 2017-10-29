@@ -1,6 +1,6 @@
 {
   "name": "pure-html",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A dev environment for creating standalone html files",
   "main": "bin/pure-html",
   "bin": {

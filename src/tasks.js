@@ -86,7 +86,11 @@ function getFileReferencesInHTML(nodeList, attr) {
   const files = [];
 
   nodeList.forEach(node => {
-    files.push(node[attr]);
+    // Prevent bug when inline elements get passed here with
+    // value of src equal to empty string.
+    if (node[attr] !== '') {
+      files.push(node[attr]);
+    }
   });
 
   return files;
