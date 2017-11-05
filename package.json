@@ -18,14 +18,14 @@
   "license": "MIT",
   "devDependencies": {
     "husky": "0.14.3",
-    "npm-check": "5.4.4",
+    "npm-check": "^5.5.1",
     "package-json-validator": "0.6.2",
     "pkg-ok": "1.1.0",
-    "prettier": "1.5.2",
-    "tap": "10.7.0"
+    "prettier": "^1.7.4",
+    "tap": "^10.7.2"
   },
   "dependencies": {
-    "browser-sync": "2.18.12",
+    "browser-sync": "^2.18.13",
     "bs-html-injector": "3.0.3",
     "commander": "2.11.0",
     "del": "3.0.0",
@@ -34,8 +34,8 @@
     "gulp": "github:gulpjs/gulp#4.0",
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
-    "inline-source": "5.2.5",
-    "jsdom": "^11.3.0"
+    "inline-source": "^5.2.6",
+    "jsdom": "11.3.0"
   },
   "repository": {
     "type": "git",
