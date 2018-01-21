@@ -3,6 +3,9 @@
   "version": "1.2.1",
   "description": "A dev environment for creating standalone html files",
   "main": "bin/pure-html",
+  "files": [
+    "bin/pure-html"
+  ],
   "bin": {
     "pure-html": "./bin/pure-html"
   },
@@ -18,24 +21,25 @@
   "license": "MIT",
   "devDependencies": {
     "husky": "0.14.3",
-    "npm-check": "^5.5.1",
-    "package-json-validator": "0.6.2",
+    "npm-check": "5.5.2",
+    "package-json-validator": "0.6.3",
     "pkg-ok": "1.1.0",
-    "prettier": "^1.7.4",
-    "tap": "^10.7.2"
+    "prettier": "1.10.2",
+    "tap": "11.0.1"
   },
   "dependencies": {
-    "browser-sync": "^2.18.13",
+    "browser-sync": "^2.23.5",
     "bs-html-injector": "3.0.3",
-    "commander": "2.11.0",
+    "commander": "^2.13.0",
     "del": "3.0.0",
-    "fs-extra": "^4.0.2",
+    "fs-extra": "^5.0.0",
     "glob": "7.1.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
-    "inline-source": "^5.2.6",
-    "jsdom": "11.3.0"
+    "inline-source": "^6.1.0",
+    "jsdom": "^11.5.1",
+    "request": "^2.83.0"
   },
   "repository": {
     "type": "git",
