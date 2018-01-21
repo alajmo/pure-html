@@ -1,3 +1,4 @@
+.purehtmlrc.json
 node_modules
+test
 test/files/dist
-
