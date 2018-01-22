@@ -96,6 +96,7 @@ function getFileReferencesInHTML(nodeList, attr) {
   return files;
 }
 
+/** Copy local and non-local (urls) assets */
 function copyNonInlineAssets({ JSDOM, html, src, dest }) {
   const { document } = new JSDOM(html).window;
 
@@ -178,20 +179,8 @@ function htmlLint(html) {
 }
 
 function inlineSource(file, src) {
-  return new Promise((resolve, reject) => {
-    inline(
-      file,
-      {
-        compress: true,
-        rootpath: src
-      },
-      (err, html) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(html);
-        }
-      }
-    );
+  return inline.inlineSource(file, {
+    compress: true,
+    rootpath: src
   });
 }
