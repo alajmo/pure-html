@@ -1,6 +1,7 @@
 # pure-html
 
-Sometimes you just want to create a standard html file with no dependencies, this little plugin helps you do just that with hot-reloading of html and css!
+Sometimes you just want to create a standard html file with no dependencies, this little plugin helps you do just that with **hot-reloading** of html and css!
+
 **Go from this:**
 
 *index.html*
@@ -70,7 +71,6 @@ console.log('Hello World!');
 ## Usage
 
 ```txt
-
   Usage: pure-html [options]
 
   Command line tool for creating standalone html files.
@@ -90,7 +90,6 @@ console.log('Hello World!');
 
     $ pure-html -w -p 8000 -s src -d dist
     $ pure-html -d output-folder
-
 ```
 
 Additionally, I can recommend [Base 64 encoding](http://b64.io/) in-case you want to inline svg's.
