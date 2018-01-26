@@ -1,15 +1,18 @@
 # pure-html
 
-Sometimes you just want to create a standard `index.html` with no dependencies, this little plugin helps you do just that with hot-reloading of html and css!
-Go from this:
+Sometimes you just want to create a standard html file with no dependencies, this little plugin helps you do just that with hot-reloading of html and css!
+**Go from this:**
 
-**index.html**
+*index.html*
 ```html
 <!doctype html>
 <html lang="en">
     <head>
+        <link inline rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
         <link inline rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="non-inline-style.css">
     </head>
+
     <body>
         <div>
             Test
@@ -19,26 +22,29 @@ Go from this:
 </html>
 ```
 
-**style.css**
+*style.css*
 ```html
 body, html {
-  position: flex;
-  background: red;
+    display: flex;
+    background: blue;
 }
 ```
 
-**script.js**
+*script.js*
 ```html
 console.log('Hello World!');
 ```
 
-To this:
-**index.html**
+**To this:**
+
+*index.html*
 ```html
 <!doctype html>
 <html lang="en">
     <head>
-        <style>body,html{background:#00f}</style>
+        <style>@font-face{font-family:'Roboto';font-style:normal;font-weight:400;src:local('Roboto'),local('Roboto-Regular'),url(https://fonts.gstatic.com/s/roboto/v18/zN7GBFwfMP4uA6AR0HCoLQ.ttf) format('truetype')}</style>
+        <style>body,html{display:-webkit-box;display:-ms-flexbox;display:flex;background:#00f}</style>
+        <link rel="stylesheet" href="non-inline-style.css">
     </head>
 
     <body>
@@ -52,11 +58,10 @@ To this:
 
 ## Features
 
-* Autoprefixer
-* Hot-reloading of HTML and CSS
+* Inline css and js
+* Hot-reloading of html and css
+* Css autoprefixer
 * Html Validation
-* Inline CSS / JS
-* No inline CSS / JS
 
 ## Requirements
 
@@ -85,7 +90,7 @@ To this:
 
     $ pure-html -w -p 8000 -s src -d dist
     $ pure-html -d output-folder
-  
+
 ```
 
 Additionally, I can recommend [Base 64 encoding](http://b64.io/) in-case you want to inline svg's.
