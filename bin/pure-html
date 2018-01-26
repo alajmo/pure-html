@@ -1,26 +1,23 @@
 #!/usr/bin/env node
 
 const action = require('../src/server.js');
-const fs = require('fs');
 const glob = require('glob');
-const os = require('os');
 const defaultConfig = require('../config/default.json');
-const path = require('path');
 const pkg = require('../package.json');
 const program = require('commander');
 
 program
   .version(pkg.version)
   .description('Command line tool for creating standalone html files.')
-  .option('-w, --watch', `start browsersync. [boolean] [default: ${defaultConfig.watch}]`)
+  .option(
+    '-w, --watch',
+    `start browsersync. [boolean] [default: ${defaultConfig.watch}]`
+  )
   .option(
     '-s, --src [path]',
     `source folder. [string] [default: current working directory]`
   )
-  .option(
-    '-d, --dest <path>',
-    `output folder. [string] [required]`
-  )
+  .option('-d, --dest <path>', `output folder. [string] [required]`)
   .option(
     '-p, --port [port]',
     `port browswersync listens on. [integer] [default: ${defaultConfig.port}]`
