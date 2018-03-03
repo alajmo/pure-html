@@ -1,6 +1,6 @@
 {
   "name": "pure-html",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A dev environment for creating standalone html files",
   "main": "bin/pure-html",
   "files": [
@@ -46,6 +46,17 @@
     "url": "git://github.com/samiralajmovic/pure-html.git"
   },
   "homepage": "https://github.com/samiralajmovic/pure-html",
+  "bugs": "https://github.com/samiralajmovic/pure-html/issues",
+  "contributors": [
+    {
+      "name" : "Samir Alajmovic",
+      "email" : "alajmovic.samir@gmail.com",
+      "url" : "https://www.alajmovic.com"
+    }
+  ],
+  "engines": {
+    "node": ">=8.9.0"
+  },
   "keywords": [
     "html",
     "inline"
