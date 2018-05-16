@@ -34,7 +34,7 @@
     "del": "3.0.0",
     "fs-extra": "5.0.0",
     "glob": "7.1.2",
-    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp": "4.0.0",
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
     "inline-source": "6.1.0",
@@ -49,9 +49,9 @@
   "bugs": "https://github.com/samiralajmovic/pure-html/issues",
   "contributors": [
     {
-      "name" : "Samir Alajmovic",
-      "email" : "alajmovic.samir@gmail.com",
-      "url" : "https://www.alajmovic.com"
+      "name": "Samir Alajmovic",
+      "email": "alajmovic.samir@gmail.com",
+      "url": "https://www.alajmovic.com"
     }
   ],
   "engines": {
