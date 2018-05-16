@@ -15,9 +15,12 @@ program
   )
   .option(
     '-s, --src [path]',
-    `source folder. [string] [default: current working directory]`
+    `source folder. [string] [default: ${defaultConfig.src}]`
   )
-  .option('-d, --dest <path>', `output folder. [string] [required]`)
+  .option(
+    '-d, --dest <path>',
+    `output folder. [string] [default: ${defaultConfig.dest}]`
+  )
   .option(
     '-p, --port [port]',
     `port browswersync listens on. [integer] [default: ${defaultConfig.port}]`
@@ -45,8 +48,8 @@ function getOptions() {
   }
 
   return Object.freeze({
-    dest: program.dest,
     src: program.src || defaultConfig.src,
+    dest: program.dest || defaultConfig.src,
     port: program.port || defaultConfig.port,
     watch: program.watch || defaultConfig.watch,
     htmlLint: program.htmlLint || defaultConfig.htmlLint

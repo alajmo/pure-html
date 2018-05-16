@@ -1,5 +1,6 @@
 {
   "src": ".",
+  "dest": "dist",
   "port": 3000,
   "watch": false,
   "htmlLint": false
