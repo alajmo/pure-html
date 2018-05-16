@@ -11,23 +11,23 @@ program
   .description('Command line tool for creating standalone html files.')
   .option(
     '-w, --watch',
-    `start browsersync. [boolean] [default: ${defaultConfig.watch}]`
+    `start browsersync [boolean] [default: ${defaultConfig.watch}]`
   )
   .option(
     '-s, --src [path]',
-    `source folder. [string] [default: ${defaultConfig.src}]`
+    `source folder [string] [default: ${defaultConfig.src}]`
   )
   .option(
     '-d, --dest <path>',
-    `output folder. [string] [default: ${defaultConfig.dest}]`
+    `output folder [string] [default: ${defaultConfig.dest}]`
   )
   .option(
     '-p, --port [port]',
-    `port browswersync listens on. [integer] [default: ${defaultConfig.port}]`
+    `port browswersync listens on [integer] [default: ${defaultConfig.port}]`
   )
   .option(
     '-l, --html-lint',
-    `enable HTML lint. [boolean] [default: ${defaultConfig.htmlLint}]`
+    `enable HTML lint [boolean] [default: ${defaultConfig.htmlLint}]`
   );
 
 program.on('--help', () => {
