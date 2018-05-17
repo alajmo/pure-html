@@ -64,7 +64,7 @@ function initBrowsersync(config, cb) {
   const globs = Globs({ src: config.src, dest: config.dest });
 
   bs.use(htmlInjector, {
-    files: [globs.dest.html]
+    files: [globs.src.html]
   });
 
   bs.init({

@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node bin/pure-html -p 3000 -w -s examples/src -d examples/dist",
     "build": "node bin/pure-html -l -s examples/src -d examples/dist",
-    "test": "node test/test.js",
+    "test": "node test/index.js",
     "precommit": "prettier --single-quote --bracket-spacing true --trailing-comma none --write \"src/**/*.js\"",
     "prepush": "npm test && pjv package.json",
     "prepublish": "pkg-ok && pjv package.json"
