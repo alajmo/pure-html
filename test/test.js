@@ -12,10 +12,10 @@ const readFile = promisify(fs.readFile);
 main();
 
 function main() {
-  generateFiles();
-  generateFilesPrefixDot();
+  // generateFiles();
+  // generateFilesPrefixDot();
   generateFilesAbsolutePath();
-  generateAssets();
+  // generateAssets();
 }
 
 function generateFiles() {
@@ -129,7 +129,8 @@ function generateFilesAbsolutePath() {
       stdio: [0, 1, 2]
     });
 
-    t.equal(fs.existsSync('test/files/dist/index.html'), true, 'File exists.');
+    t.equal(fs.existsSync('test/files/dist/index.html'), true, 'index.html exists.');
+    t.equal(fs.existsSync('test/files/dist/non-inline-base.css'), true, 'non-inline-base.css exists.');
 
     t.equal(
       fs.existsSync('test/files/dist/index2.html'),
@@ -150,7 +151,7 @@ function generateFilesAbsolutePath() {
     );
 
     t.end();
-    del.sync(dest);
+    // del.sync(dest);
   });
 }
 

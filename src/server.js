@@ -2,30 +2,30 @@ const gulp = require('gulp');
 const tasks = require('./tasks.js');
 
 module.exports = {
-  build: (config, htmlFiles) => {
+  build: (options, htmlFiles) => {
     gulp.series(
-      tasks.clean(config.dest),
-      tasks.initFolders(config.dest),
+      tasks.clean(options.dest),
+      tasks.initFolders(options.dest),
       tasks.inlineSources({
         htmlFiles,
-        src: config.src,
-        dest: config.dest,
-        htmlLint: config.htmlLint
+        src: options.src,
+        dest: options.dest,
+        htmlLint: options.htmlLint
       })
     )();
   },
-  dev: (config, htmlFiles) => {
+  dev: (options, htmlFiles) => {
     gulp.series(
-      tasks.clean(config.dest),
-      tasks.initFolders(config.dest),
-      tasks.initBrowsersync(config),
+      tasks.clean(options.dest),
+      tasks.initFolders(options.dest),
+      tasks.initBrowsersync(options),
       tasks.inlineSources({
         htmlFiles,
-        src: config.src,
-        dest: config.dest,
-        htmlLint: config.htmlLint
+        src: options.src,
+        dest: options.dest,
+        htmlLint: options.htmlLint
       }),
-      tasks.watch(htmlFiles, config)
+      tasks.watch(htmlFiles, options)
     )();
   }
 };

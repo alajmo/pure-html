@@ -25,10 +25,6 @@ const tasks = Object.freeze({
 
 module.exports = tasks;
 
-function clean(files) {
-  return del([files]);
-}
-
 function watch(htmlFiles, config, cb) {
   const globs = Globs({ src: config.src, dest: config.dest });
 
@@ -53,6 +49,10 @@ function watch(htmlFiles, config, cb) {
   );
 
   cb();
+}
+
+function clean(files) {
+  return del([files], { force: true }).catch(err => console.error(err));
 }
 
 function initFolders(dest, cb) {
@@ -111,16 +111,14 @@ function copyNonInlineAssets({ JSDOM, html, src, dest }) {
   );
 
   scriptPaths.forEach(scriptPath => {
-    const relativePath = path.join(dest, path.relative(src, scriptPath));
-    const srcFile = path.join(process.cwd(), src, relativePath);
-    const destFile = path.join(process.cwd(), dest, relativePath);
+    const srcFile = path.join(src, scriptPath);
+    const destFile = path.join(dest, scriptPath);
     fs.copySync(srcFile, destFile);
   });
 
   stylePaths.forEach(stylePath => {
-    const relativePath = path.join(dest, path.relative(src, stylePath));
-    const srcFile = path.join(process.cwd(), src, relativePath);
-    const destFile = path.join(process.cwd(), dest, relativePath);
+    const srcFile = path.join(src, stylePath);
+    const destFile = path.join(dest, stylePath);
     fs.copySync(srcFile, destFile);
   });
 }
