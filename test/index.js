@@ -12,10 +12,10 @@ const readFile = promisify(fs.readFile);
 main();
 
 function main() {
-  // generateFiles();
-  // generateFilesPrefixDot();
+  generateFiles();
+  generateFilesPrefixDot();
   generateFilesAbsolutePath();
-  // generateAssets();
+  generateAssets();
 }
 
 function generateFiles() {
@@ -30,7 +30,7 @@ function generateFiles() {
     let numStyleElements = jsDOM.document.querySelectorAll('link[inline]');
     t.equal(
       Object.keys(numStyleElements).length,
-      2,
+      1,
       'Contains 2 link elements with inline attribute'
     );
 
@@ -43,7 +43,7 @@ function generateFiles() {
     html = await readFile('test/files/dist/index.html', 'utf-8');
     jsDOM = new JSDOM(html).window;
     numStyleElements = jsDOM.document.querySelectorAll('style');
-    t.equal(Object.keys(numStyleElements).length, 2, 'Contains 2 inline style elements')
+    t.equal(Object.keys(numStyleElements).length, 1, 'Contains 2 inline style elements')
 
     t.equal(
       fs.existsSync('test/files/dist/index2.html'),
