@@ -38,10 +38,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/samiralajmovic/pure-html.git"
+    "url": "git://github.com/alajmo/pure-html.git"
   },
-  "homepage": "https://github.com/samiralajmovic/pure-html",
-  "bugs": "https://github.com/samiralajmovic/pure-html/issues",
+  "homepage": "https://github.com/alajmo/pure-html",
+  "bugs": "https://github.com/alajmo/pure-html/issues",
   "contributors": [
     {
       "name": "Samir Alajmovic",
