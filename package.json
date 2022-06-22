@@ -33,7 +33,7 @@
     "html-autoprefixer": "0.3.8",
     "html5-lint": "0.3.0",
     "inline-source": "6.1.0",
-    "jsdom": "11.5.1",
+    "jsdom": "16.5.0",
     "request": "2.83.0"
   },
   "repository": {
